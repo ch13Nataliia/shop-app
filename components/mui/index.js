@@ -13,7 +13,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
+import List from '@mui/material/List';
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
@@ -35,8 +35,7 @@ import TableRow from "@mui/material/TableRow";
 import TableFooter from "@mui/material/TableFooter"
 
 export {
-  // Icons
-  MenuIcon,
+    MenuIcon,
   EditIcon,
   DeleteIcon,
   CloseIcon,
