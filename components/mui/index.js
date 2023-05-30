@@ -35,7 +35,7 @@ import TableRow from "@mui/material/TableRow";
 import TableFooter from "@mui/material/TableFooter"
 
 export {
-    MenuIcon,
+   MenuIcon,
   EditIcon,
   DeleteIcon,
   CloseIcon,

@@ -1,17 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 
 import Header from '@/components/Header';
 import {
   Container,
-  // Alert,
-  // Snackbar,
-  // IconButton,
-  // CloseIcon,
+  Alert,
+  Snackbar,
+  IconButton,
+  CloseIcon,
 } from '@/components/mui';
 
-// import { UIContext } from "./contexts/UI.context";
+import { UIContext } from '@/components/contexts/UI.context';
+import Paragraph from '@/components/Paragrapg';
+
+
+
 
 function Layout({ children }) {
+  const {
+    isOpen: open,
+    severity,
+    onClose: handleClose,
+    message,
+    hideDuration,
+  } = useContext(UIContext);
+
+ 
   return (
     <>
       <header>
@@ -20,6 +33,21 @@ function Layout({ children }) {
       <main>
         <Container maxWidth="md">{children}</Container>
       </main>
+      {
+        <Snackbar
+          open={open}
+          autoHideDuration={hideDuration}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity={severity}
+            sx={{ width: '100%' }}
+          >
+            <Paragraph sx={{margin: "0px"}}>{message}</Paragraph>
+          </Alert>
+        </Snackbar>
+      }
     </>
   );
 }
