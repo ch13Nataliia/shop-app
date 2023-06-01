@@ -1,19 +1,10 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 
 import Header from '@/components/Header';
-import {
-  Container,
-  Alert,
-  Snackbar,
-  IconButton,
-  CloseIcon,
-} from '@/components/mui';
+import { Container, Alert, Snackbar } from '@/components/mui';
 
 import { UIContext } from '@/components/contexts/UI.context';
-import Paragraph from '@/components/Paragrapg';
-
-
-
+import Paragraph from '@/components/Paragraph';
 
 function Layout({ children }) {
   const {
@@ -24,14 +15,13 @@ function Layout({ children }) {
     hideDuration,
   } = useContext(UIContext);
 
- 
   return (
     <>
       <header>
         <Header />
       </header>
       <main>
-        <Container maxWidth="md">{children}</Container>
+        <Container maxWidth="xl">{children}</Container>
       </main>
       {
         <Snackbar
@@ -44,7 +34,7 @@ function Layout({ children }) {
             severity={severity}
             sx={{ width: '100%' }}
           >
-            <Paragraph sx={{margin: "0px"}}>{message}</Paragraph>
+            <Paragraph sx={{ margin: '0px' }}>{message}</Paragraph>
           </Alert>
         </Snackbar>
       }

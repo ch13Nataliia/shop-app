@@ -1,10 +1,8 @@
 // import { useUser } from '@auth0/nextjs-auth0';
 import { useProducts } from '@/lib/tq/products/queries';
-
 import { List, ListItem } from '@/components/mui';
 import Product from '@/lib/api-functions/server/products/model';
 import Paragraph from '@/components/Paragraph';
-import { useAddToBasket } from '@/lib/tq/baskets/mutations';
 
 const Productlist = ({
   deleteHandler = () => {},
@@ -14,7 +12,7 @@ const Productlist = ({
   canBuy = true,
 }) => {
   // const { user } = useUser();
-  const mutation = useAddToBasket();
+  // const mutation = useAddToBasket();
 
   const { data: products } = useProducts();
   if (!products.length) return <Paragraph>No Products to show</Paragraph>;

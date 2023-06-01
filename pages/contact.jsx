@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-// import { Inter } from 'next/font/google'
 import { Button,EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout'
 
-// const inter = Inter({ subsets: ['latin'] })
 
 export default function Contact() {
   return (

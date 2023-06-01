@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import ProductForm from '@/components/forms/ProductForm';
 import { useUpdate } from '@/lib/product/mutations';
-
+import { fetchProduct } from '@/lib/api-functions/server/products/queries';
 export default function UpdateProduct({ ssd }) {
   return (
     <>
@@ -22,8 +22,8 @@ export default function UpdateProduct({ ssd }) {
   );
 }
 
-export async function getServerSideProps() {
-  const product = await fetchProduct(id).catch((err) => console.log(err));
+export async function getServerSideProps({ params }) {
+  const product = await fetchProduct(params.id).catch((err) => console.log(err));
   console.log('product', product);
   return { props: { ssd: JSON.parse(JSON.stringify(product)) } };
 }

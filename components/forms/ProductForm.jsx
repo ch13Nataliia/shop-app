@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-// import CircularProgress from "@mui/material/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Button } from "@mui/material";
@@ -49,7 +49,6 @@ export default function ProductForm({ submitHandler, product }) {
   };
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(submitFn)}>
       <div style={formRowStyle}>
         <Controller

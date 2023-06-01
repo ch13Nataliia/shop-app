@@ -1,18 +1,18 @@
 import { useState } from 'react';
-
 import {
   QueryClient,
   QueryClientProvider,
   Hydrate,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import '@/styles/globals.css';
-
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
-import theme from '@/lib/theme';
-import CssBaseline from '@mui/material/CssBaseline';
 import { UIProvider } from '@/components/contexts/UI.context';
+
+import '@/styles/globals.css';
+import theme from '@/lib/theme';
 
 export default function App({ Component, pageProps }) {
   const [queryClient] = useState(
@@ -31,17 +31,18 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <CssBaseline />
-
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools />
-          <Hydrate state={pageProps.dehydratedState}>
-            <UIProvider>
-              <Component {...pageProps} />
-            </UIProvider>
-          </Hydrate>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools />
+            <Hydrate state={pageProps.dehydratedState}>
+              <UIProvider>
+                <Component {...pageProps} />
+              </UIProvider>
+            </Hydrate>
+          </QueryClientProvider>
+        </ThemeProvider>
+      </UserProvider>
     </>
   );
 }
