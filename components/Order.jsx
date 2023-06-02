@@ -15,7 +15,9 @@ import {
   Box,
 } from '@/components/mui';
 
-import Heading from './Heading';
+import Heading from '@/components/Heading';
+import { slugify } from "@/lib/utils/formatters";
+
 
 const ProductDisplay = ({
   product: { _id, title, image, price, qyantity } = {},

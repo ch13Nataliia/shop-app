@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Button,EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout'
-
+import Heading from "@/components/Heading";
+import ContactForm from "@/components/forms/ContactForm";
 
 export default function Contact() {
   return (
@@ -14,9 +15,9 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <h1>CONTACT US</h1>
-        <Button variant='contained'>PRESS ME</Button>
+        <Heading component="h2">Contact Us</Heading>
+        <ContactForm />
       </Layout>
     </>
-  )
+  );
 }

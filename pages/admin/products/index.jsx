@@ -1,36 +1,46 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { fetchProducts } from '@/lib/api-functions/server/products/queries';
-import { STORAGE_KEY } from '@/lib/tq/products/settings';
-import { Button } from '@/components/mui';
-import { UIContext } from '@/components/contexts/UI.context';
-import Layout from '@/components/Layout';
-import Heading from '@/components/Heading';
-import { QueryBoundaries } from '@/components/QueryBoundaries';
-import ProductList from '@/components/ProductList';
-import { useDelete } from '@/lib/tq/products/mutations';
+// import {useContext} from 'react'
+import Head from "next/head";
+import Link from "next/link";
+
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
+
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { fetchProducts } from "@/lib/api-functions/server/products/queries";
+import { STORAGE_KEY } from "@/lib/tq/products/settings";
+
+import { log } from "@/lib/utils/formatters";
+
+import { checkPermissions } from "@/lib/api-functions/server/utils";
+import settings from "@/lib/api-functions/server/permissions";
+
+import Layout from "@/components/Layout";
+import Heading from "@/components/Heading";
+import QueryBoundaries from "@/components/QueryBoundaries";
+import ProductList from "@/components/ProductList";
+import { Button } from "@/components/mui";
+import { useDelete } from "@/lib/tq/products/mutations";
+
 
 export default function AdminProductList() {
   const removeMutation = useDelete();
 
-  // const canAdd = checkPermissions(
-  //   user,
-  //   setting.identifer,
-  //   settings.permissions.products.create,
-  // );
+  const canAdd = checkPermissions(
+    user,
+    setting.identifer,
+    settings.permissions.products.create,
+  );
 
-  // const canUpdate = checkPermissions(
-  //   user,
-  //   setting.identifer,
-  //   settings.permissions.products.update,
-  // );
+  const canUpdate = checkPermissions(
+    user,
+    setting.identifer,
+    settings.permissions.products.update,
+  );
 
-  // const canRemove = checkPermissions(
-  //   user,
-  //   setting.identifer,
-  //   settings.permissions.products.remove,
-  // );
+  const canRemove = checkPermissions(
+    user,
+    setting.identifer,
+    settings.permissions.products.remove,
+  );
 
   const removeHandler = (id) => {
     removeMutation.mutate(id);
@@ -68,18 +78,25 @@ export default function AdminProductList() {
   );
 }
 
-export async function getStaticProps(context) {
-  const products = await fetchProducts().catch((err) => console.log(err));
-  const queryClient = new QueryClient();
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(context) {
 
-  await queryClient.setQueryData(
-    [STORAGE_KEY],
-    JSON.parse(JSON.stringify(products)),
-  );
+    const session = await getSession(context.req, context.res);
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
+    const products = await fetchProducts().catch((err) => console.log(err));
+
+    const queryClient = new QueryClient();
+  
+    await queryClient.setQueryData(
+      [STORAGE_KEY],
+      JSON.parse(JSON.stringify(products))
+    );
+
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+        user: session.user,
+      },
+    };
+  },
+});

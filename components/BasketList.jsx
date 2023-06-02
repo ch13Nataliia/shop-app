@@ -1,28 +1,24 @@
-
-import { List, ListItem } from '@/components/mui';
-import Product from '@/components/Product';
-import Paragraph from '@/components/Paragraph';
-import { nanoid } from 'nanoid';
-import { useUserBasket } from '@/lib/tq/baskets/queries';
+import { nanoid } from "nanoid";
+import { List, ListItem } from "@/components/mui";
+import Product from "@/components/Product";
+import Paragraph from "@/components/Paragraph";
+import { useUserBasket } from "@/lib/tq/baskets/queries";
 
 const BasketList = ({
   deleteHandler = () => {
-    console.log("No deleteHandler supplied")
+    console.log("No deleteHandler supplied");
   },
-  headingLevel = 2,
-
+  headingLevel=1
 }) => {
-
-  const { data: products } = useUserBasket();
+  const { data: basket } = useUserBasket();
   const {items} = basket;
-  if (!items.length) return <Paragraph>No Items to show</Paragraph>;
+  if (!items.length) return <Paragraph>No items to show</Paragraph>;
   return (
     <List
-      components="ol"
+      component="ol"
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(400px,1fr))',
-
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
       }}
     >
       {items.map((item) => (
@@ -32,8 +28,8 @@ const BasketList = ({
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
             canBuy={false}
-            canRemove={true}
             canUpdate={false}
+            canRemove={true}
           />
         </ListItem>
       ))}

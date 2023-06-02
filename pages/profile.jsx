@@ -1,15 +1,12 @@
 import Head from 'next/head';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { fetchProducts } from '@/lib/api-functions/server/products/queries';
-import { STORAGE_KEY } from '@/lib/tq/products/settings';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
+
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
-import ProductList from '@/components/ProductList';
+import UserDisplay from '@/components/UserDisplay';
 
-export default function Home() {
-
+export default function ProfilePage({ ssd, sess }) {
   return (
     <>
       <Head>
@@ -20,27 +17,22 @@ export default function Home() {
       </Head>
       <Layout>
         <Heading component="h2">Profile</Heading>
-
         <QueryBoundaries>
-          <ProductList />
+          <UserDisplay user = {ssd}/>
         </QueryBoundaries>
+        <pre>{JSON.stringify(sess, null, 2)}</pre>
       </Layout>
     </>
   );
 }
 
-export async function getStaticProps(context) {
-  const products = await fetchProducts().catch((err) => console.log(err));
-  const queryClient = new QueryClient();
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(context) {
+    // Getting user data from Auth0
+    const session = await getSession(context.req, context.res);
 
-  await queryClient.setQueryData(
-    [STORAGE_KEY],
-    JSON.parse(JSON.stringify(products)),
-  );
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
+    return {
+      props: { ssd: session.user, sess: JSON.parse(JSON.stringify(session)) },
+    };
+  },
+});

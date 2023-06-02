@@ -1,7 +1,8 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { dinero, toDecimal } from 'dinero.js';
-import { GBP } from '@dinero.js/currencies';
+
 import {
   Typography,
   List,
@@ -15,8 +16,8 @@ import {
   Button,
   Box,
 } from '@/components/mui';
-import Heading from '@components/Heading';
-// import { slugify, formatPrice } from '@/lib/utils/formatters';
+import Heading from '@/components/Heading';
+import { slugify, formatPrice } from '@/lib/utils/formatters';
 
 const ProductDisplay = ({
   product: { _id, title, image, price, qyantity } = {},
@@ -34,7 +35,7 @@ const ProductDisplay = ({
   return (
     <Card sx={{ width: '100%' }}>
       <CardMedia sx={{ display: 'grid', placeItems: 'center' }}>
-        <Image alt={title} src={image} wisth="500" height="500" />
+        <Image alt={title} src={image} width="500" height="500" />
       </CardMedia>
       <CardContent>
         <Heading component={`h${headingLevel}`} sx={{ textAlign: 'center' }}>
@@ -52,7 +53,8 @@ const ProductDisplay = ({
             Price
           </Typography>
           <Typography component="dd" sx={{ fontWeight: 'bold' }}>
-            {formatPrice(toDecimal(dinero({ amount: price, currency: GBP })))}
+          {price}
+            {/* {formatPrice(toDecimal(dinero({ amount: price, currency: GBP })))} */}
           </Typography>
           <Typography component="dt" sx={{ textAlign: 'right' }}>
             Quantity

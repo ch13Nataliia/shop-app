@@ -1,4 +1,3 @@
-// import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import {
   Typography,
@@ -8,20 +7,18 @@ import {
   CardActions,
   Avatar,
   List,
-  // ListItem,
 } from "@/components/mui";
-// import Paragraph from "@/components/Paragraph";
+
 import Heading from "@/components/Heading";
 
 const UserDisplay = ({ user }) => {
-  // const { user:{ nickname, name, picture, email, sub }  } = useUser();
   const { nickname, name, picture, email, sub } = user;
-  // console.log(user);
+
   return (
     <>
       <Card>
         <CardMedia sx={{ display: 'grid', placeContent: 'center'}}>
-          {/* <Avatar alt={nickname} src={picture} referrerpolicy="no-referrer" /> */}
+
           <Image
             alt={nickname}
             src={picture}

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from "react";
+import React, { createContext, useState } from "react";
 
 export const UIContext = createContext({
   snackbar: {
@@ -43,13 +43,3 @@ export const UIProvider = ({ children }) => {
     </UIContext.Provider>
   );
 };
-
-/*
-<Snackbar
-  open={open}
-  autoHideDuration={6000}
-  onClose={handleClose}
-  message="Note archived"
-  action={action}
-/>
-*/

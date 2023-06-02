@@ -1,8 +1,8 @@
-// import { useUser } from '@auth0/nextjs-auth0';
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useProducts } from '@/lib/tq/products/queries';
 
 import { List, ListItem } from '@/components/mui';
-import Product from '@/lib/api-functions/server/products/model';
+import Product from '@/components/Product';
 import Paragraph from '@/components/Paragraph';
 import { useAddToBasket } from '@/lib/tq/baskets/mutations';
 
@@ -13,7 +13,7 @@ const Productlist = ({
   canRemove = false,
   canBuy = true,
 }) => {
-  // const { user } = useUser();
+  const { user } = useUser();
   const mutation = useAddToBasket();
 
   const { data: products } = useProducts();

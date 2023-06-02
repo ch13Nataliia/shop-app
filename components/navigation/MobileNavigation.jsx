@@ -1,13 +1,19 @@
 import React from 'react';
 import Link from "next/link";
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
+import {
+  Box,
+  Drawer,
+  Divider,
+  List, 
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from '@/components/mui'
+
+import { useUser } from '@auth0/nextjs-auth0/client';
+import ShoppingCartDisplay from '@/components/BasketDisplay';
+
 
 function MobileNavigation({
   mobileOpen = false,
@@ -15,6 +21,8 @@ function MobileNavigation({
     console.log('no handleDrawerToggle function provided'),
   drawerWidth = 240,
 }) {
+
+  const {user} = useUser();
   const itemLinkStyles = {
     display: 'block',
     textDecoration: 'none',
@@ -27,7 +35,7 @@ function MobileNavigation({
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true, 
         }}
         sx={{
           display: { xs: 'block', sm: 'none' },
@@ -36,7 +44,7 @@ function MobileNavigation({
       >
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
           <Typography variant="h6" sx={{ my: 2 }}>
-            SHOP APP
+            SHOP APP {user && <ShoppingCartDisplay user={user} />}
           </Typography>
           <Divider />
           <List>
@@ -60,6 +68,30 @@ function MobileNavigation({
               <Link href={'/contact'} passHref style={itemLinkStyles}>
                 <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
                   <ListItemText primary={'Contact'} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link href={'/profile'} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: 'left' }}>
+                  <ListItemText primary={'Profile'} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link href={'/api/auth/logout'} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: 'left', width: '100%' }}>
+                  <ListItemText primary={'Log Out'} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link href={'//api/auth/login'} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: 'left'}}>
+                  <ListItemText primary={'Log in'} />
                 </ListItemButton>
               </Link>
             </ListItem>

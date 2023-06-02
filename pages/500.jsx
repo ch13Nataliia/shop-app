@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Button } from "@/components/mui";
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
+import Paragraph from "@/components/Paragraph";
+import { Button } from "@/components/mui";
 
-export default function Custom404() {
+export default function Custom500() {
   return (
     <>
       <Head>
@@ -15,8 +16,11 @@ export default function Custom404() {
       </Head>
       <Layout>
         <Heading component="h1" variant="h3">
-          Page Not Found
+          Server Error
         </Heading>
+        <Paragraph>
+          The server is unavailable at the moment. Please try again later.
+        </Paragraph>
         <Button href="/" component={Link}>
           Back to home page
         </Button>

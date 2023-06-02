@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
 
 import Header from '@/components/Header';
-import { Container, Alert, Snackbar } from '@/components/mui';
+import { Container,
+   Alert, 
+   Snackbar,
+   IconButton,
+   CloseIcon,
+  } from '@/components/mui';
 
 import { UIContext } from '@/components/contexts/UI.context';
 import Paragraph from '@/components/Paragraph';
@@ -23,21 +28,25 @@ function Layout({ children }) {
       <main>
         <Container maxWidth="xl">{children}</Container>
       </main>
-      {
+      
         <Snackbar
-          open={open}
-          autoHideDuration={hideDuration}
-          onClose={handleClose}
-        >
-          <Alert
-            onClose={handleClose}
-            severity={severity}
-            sx={{ width: '100%' }}
+        open={open}
+        autoHideDuration={hideDuration}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+          <Paragraph sx={{ margin: "0px" }}>{message}</Paragraph>
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
           >
-            <Paragraph sx={{ margin: '0px' }}>{message}</Paragraph>
-          </Alert>
-        </Snackbar>
-      }
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Alert>
+      </Snackbar>
+      
     </>
   );
 }

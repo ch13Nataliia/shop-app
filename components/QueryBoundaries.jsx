@@ -1,8 +1,9 @@
 import { Suspense, use } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
-import { CircularProgress } from '@mui/material';
-import { Alert, Button, Paragraph } from '@/components/mui';
+import Paragraph from '@/components/Paragraph';
+import { Alert, Button, CircularProgress } from '@/components/mui';
+
 
 export const LoadingView = () => <CircularProgress />;
 
@@ -28,3 +29,5 @@ export const QueryBoundaries = ({ children }) => {
     </ErrorBoundary>
   );
 };
+
+export default QueryBoundaries;
