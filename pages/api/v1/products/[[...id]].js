@@ -12,6 +12,9 @@ import permissions from "@/lib/api-functions/server/permissions.js";
 
 const {
   identifier,
+  // roles: {
+  //   admin,
+  // },
   permissions: {
     products: {
       create: createProducts,
@@ -48,7 +51,6 @@ const handler = nc({
   try {
     const session = await getSession(req, res);
     req.user = session.user;
-    // console.log(session);
     console.log(req.user);
     next();
   } catch (err) {

@@ -19,7 +19,7 @@
     "@tanstack/react-query-devtools": "^4.29.12",
     "auth0": "^3.4.0",
     "axios": "^1.4.0",
-    "dinero.js": "^1.9.1",
+    "dinero.js": "^2.0.0-alpha.14",
     "dotenv": "^16.0.3",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",

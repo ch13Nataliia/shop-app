@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import sgMail from "@sendgrid/mail";
+// import sgMail from "@sendgrid/mail";
 import { getSession } from "@auth0/nextjs-auth0";
 
 import {
@@ -11,7 +11,7 @@ import { add } from "@/lib/api-functions/server/orders/queries";
 
 const { STRIPE_SECRET_KEY, ADMIN_EMAIL, SENDGRID_API_KEY } = process.env;
 
-sgMail.setApiKey(SENDGRID_API_KEY);
+// sgMail.setApiKey(SENDGRID_API_KEY);
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 

@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
+import {IconButton} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Toolbar from "@mui/material/Toolbar";

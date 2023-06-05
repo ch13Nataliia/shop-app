@@ -1,4 +1,4 @@
-import { Suspense, use } from 'react';
+import { Suspense } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import Paragraph from '@/components/Paragraph';

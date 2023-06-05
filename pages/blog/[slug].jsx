@@ -3,16 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Markdown from 'marked-react';
 import {
-  Button,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Card,
   CardMedia,
   CardContent,
-  CardActions,
-  // Typography
 } from '@/components/mui';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
@@ -75,7 +68,6 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }) {
-  // console.log(params);
   const { item: unit } = await fetch(process.env.HYGRAPH_ENDPOINT, {
     method: 'POST',
     headers: {

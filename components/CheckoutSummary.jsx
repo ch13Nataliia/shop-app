@@ -13,10 +13,10 @@ import {
   TableFooter,
   Typography,
 } from "@/components/mui";
-// import Product from "@/components/Product";
-// import Paragraph from "@/components/Paragraph";
+import Product from "@/components/Product";
+import Paragraph from "@/components/Paragraph";
 import { useUserBasket } from "@/lib/tq/baskets/queries";
-// import { formatPrice } from "@/lib/utils/formatters";
+import { formatPrice } from "@/lib/utils/formatters";
 
 const BasketList = () => {
   const { data: basket } = useUserBasket();

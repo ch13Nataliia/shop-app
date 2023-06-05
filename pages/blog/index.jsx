@@ -5,11 +5,7 @@ import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import { AllItems } from '@/lib/hygraph/queries';
 import {
-  Button,
   List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Card,
   CardMedia,
   CardContent,

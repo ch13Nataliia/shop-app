@@ -6,12 +6,10 @@ import { STORAGE_KEY } from '@/lib/tq/orders/settings';
 import { Button } from '@/components/mui';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
-import  QueryBoundaries  from '@/components/QueryBoundaries';
+import QueryBoundaries from '@/components/QueryBoundaries';
 import OrderList from '@/components/OrderList';
 import { useDelete } from '@/lib/tq/orders/mutations';
-// import { log } from "@/lib/utils/formatters";
-
-
+import { log } from '@/lib/utils/formatters';
 
 export default function AdminBasketList() {
   const removeMutation = useDelete();
@@ -31,8 +29,7 @@ export default function AdminBasketList() {
         <Heading component="h2">Baskets</Heading>
 
         <QueryBoundaries>
-          <OrderList 
-            deleteHandler={removeHandler}/>
+          <OrderList deleteHandler={removeHandler} />
         </QueryBoundaries>
       </Layout>
     </>

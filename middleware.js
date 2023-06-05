@@ -18,16 +18,16 @@ export default withMiddlewareAuthRequired(async function middleware(req) {
     const res = NextResponse.next();
     const {user} = await getSession(req, res);
 
-    // console.log("user", user);
+    console.log("user", user);
     const isAdmin = checkRole(user, identifier, adminRole);
-    // console.log("isAdmin", isAdmin);
+    console.log("isAdmin", isAdmin);
     
     if (!isAdmin) {
       return NextResponse.redirect(new URL("/", req.url));
     }
     return res;
   } catch (err) {
-    // console.log("in error", err);
+    console.log("in error", err);
     // If not logged in
     NextResponse.redirect(new URL("/api/auth/login", req.url));
   }

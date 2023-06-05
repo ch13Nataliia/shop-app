@@ -28,7 +28,7 @@ export default function ProfilePage({ ssd, sess }) {
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
-    // Getting user data from Auth0
+
     const session = await getSession(context.req, context.res);
 
     return {

@@ -1,12 +1,14 @@
 import { inspect } from 'node:util';
 
 import Head from 'next/head';
+
 import {
   fetchProducts,
   fetchProduct,
 } from '@/lib/api-functions/server/products/queries';
 import Layout from '@/components/Layout';
 import Product from '@/components/Product';
+import { slugify } from '@/lib/utils/formatters';
 
 export default function SingleProduct({ ssd = {} }) {
   return (
@@ -29,7 +31,7 @@ export const getStaticPaths = async () => {
   console.log('products', products);
   const paths = products.map((product) => ({
     params: {
-      slug: sluglify(product.title, product._id),
+      slug: slugify(product.title, product._id),
     },
   }));
   console.log(
@@ -38,9 +40,10 @@ export const getStaticPaths = async () => {
   );
   return { paths, fallback: 'blocking' };
 };
+
 export async function getStaticProps({ params: { slug } }) {
   console.log('slug', slug);
-  const id = slig.split('-').at(-1);
+  const id = slug.split('-').at(-1);
   const product = await fetchProduct(id).catch((err) => console.log(err));
   console.log('product', product);
   return { props: { ssd: JSON.parse(JSON.stringify(product)) } };
