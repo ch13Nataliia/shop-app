@@ -1,13 +1,23 @@
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import Heading from '@/components/Heading';
-import ProductForm from '@/components/forms/ProductForm';
-
-import { useUpdate } from '@/lib/product/mutations';
-import { fetchProduct } from '@/lib/api-functions/server/products/queries';
-
+// import {useContext} from 'react'
+import Head from "next/head";
 import { useRouter } from "next/navigation";
+
+import Layout from "@/components/Layout";
+import Heading from "@/components/Heading";
+
+import ProductForm from "@/components/forms/ProductForm";
+import { useUpdate } from "@/lib/tq/products/mutations";
+
+import { fetchProduct } from "@/lib/api-functions/server/products/queries";
+
 export default function UpdateProduct({ ssd }) {
+  const router = useRouter();
+  const updateMutation = useUpdate();
+
+  const submitHandler = (data) => {
+    updateMutation.mutate(data);
+    router.push("/admin/products/");
+  };
   return (
     <>
       <Head>
@@ -17,8 +27,8 @@ export default function UpdateProduct({ ssd }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h1">Add Product</Heading>
-
+        <pre>{JSON.stringify(ssd, null, 2)}</pre>
+        <Heading component="h1">Edit Product</Heading>
         <ProductForm product={ssd} submitHandler={submitHandler} />
       </Layout>
     </>
@@ -26,7 +36,9 @@ export default function UpdateProduct({ ssd }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const product = await fetchProduct(params.id).catch((err) => console.log(err));
-  console.log('product', product);
+  const product = await fetchProduct(params.id).catch((err) =>
+    console.log(err)
+  );
+  console.log("product", product);
   return { props: { ssd: JSON.parse(JSON.stringify(product)) } };
 }
