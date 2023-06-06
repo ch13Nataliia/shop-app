@@ -47,8 +47,8 @@ const StripeButton = () => {
   };
   return (
     <StripeCheckout
-      name="Design Shop"
-      description="Homemade Designs for Sale" 
+      name="Next Shop"
+      description="For Sale" 
       amount={basketTotal} // pennies
       currency="GBP"
       stripeKey={process.env.STRIPE_PUBLIC_KEY}

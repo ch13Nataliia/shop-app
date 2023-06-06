@@ -1,20 +1,18 @@
 // import {useContext} from 'react'
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 
-import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
 
-import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getUserOrdersQuery } from "@/lib/api-functions/server/orders/queries";
-import { USER_ORDERS_STORAGE_KEY } from "@/lib/tq/orders/settings";
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { getUserOrdersQuery } from '@/lib/api-functions/server/orders/queries';
+import { USER_ORDERS_STORAGE_KEY } from '@/lib/tq/orders/settings';
 
-
-import Layout from "@/components/Layout";
-import Heading from "@/components/Heading";
-import QueryBoundaries from "@/components/QueryBoundaries";
-import BasketList from "@/components/BasketList";
-import BasketTotal from "@/components/BasketTotal";
-
+import Layout from '@/components/Layout';
+import Heading from '@/components/Heading';
+import QueryBoundaries from '@/components/QueryBoundaries';
+import BasketList from '@/components/BasketList';
+import BasketTotal from '@/components/BasketTotal';
 
 export default function OrdersPage() {
   return (
@@ -49,7 +47,7 @@ export const getServerSideProps = withPageAuthRequired({
 
     await queryClient.setQueryData(
       [USER_ORDERS_STORAGE_KEY],
-      JSON.parse(JSON.stringify(orders))
+      JSON.parse(JSON.stringify(orders)),
     );
 
     return {
