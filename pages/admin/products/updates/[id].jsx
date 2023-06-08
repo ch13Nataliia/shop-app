@@ -1,7 +1,5 @@
-// import {useContext} from 'react'
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
 

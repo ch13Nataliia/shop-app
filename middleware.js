@@ -28,7 +28,6 @@ export default withMiddlewareAuthRequired(async function middleware(req) {
     return res;
   } catch (err) {
     console.log("in error", err);
-    // If not logged in
     NextResponse.redirect(new URL("/api/auth/login", req.url));
   }
 });

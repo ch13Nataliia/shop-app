@@ -1,14 +1,11 @@
-// import {useContext} from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
-
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { fetchProducts } from '@/lib/api-functions/server/products/queries';
 import { STORAGE_KEY } from '@/lib/tq/products/settings';
 
-import { log } from '@/lib/utils/formatters';
+// import { log } from '@/lib/utils/formatters';
 
 import { checkPermissions } from '@/lib/api-functions/server/utils';
 import settings from '@/lib/api-functions/server/permissions';
@@ -19,7 +16,7 @@ import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
 import { Button } from '@/components/mui';
 import { useDelete } from '@/lib/tq/products/mutations';
-// import { UIContext } from '@/components/contexts/UI.context';
+
 
 export default function AdminProductList({ user }) {
   const removeMutation = useDelete();
@@ -79,7 +76,6 @@ export default function AdminProductList({ user }) {
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
-    // Getting user data from Auth0
     const session = await getSession(context.req, context.res);
 
     const products = await fetchProducts().catch((err) => console.log(err));

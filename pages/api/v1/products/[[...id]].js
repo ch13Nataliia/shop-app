@@ -1,7 +1,5 @@
 import nc from "next-connect";
-import {
-  getSession,
-} from "@auth0/nextjs-auth0";
+import { getSession } from "@auth0/nextjs-auth0";
 
 import {
   handleUnauthorisedAPICall,
@@ -12,9 +10,6 @@ import permissions from "@/lib/api-functions/server/permissions.js";
 
 const {
   identifier,
-  // roles: {
-  //   admin,
-  // },
   permissions: {
     products: {
       create: createProducts,
@@ -61,18 +56,21 @@ const handler = nc({
   .get(baseRoute, async (req, res) => {
     getProducts(req, res);
   })
+
   .post(baseRoute, async (req, res) => {
     if (!checkPermissions(req.user, identifier, createProducts)) {
       return handleUnauthorisedAPICall(res);
     }
     addProduct(req, res);
   })
+
   .put(baseRoute, async (req, res) => {
     if (!checkPermissions(req.user, identifier, updateProducts)) {
       return handleUnauthorisedAPICall(res);
     }
     updateProduct(req, res);
   })
+  
   .delete(baseRoute, async (req, res) => {
     if (!checkPermissions(req.user, identifier, removeProducts)) {
       return handleUnauthorisedAPICall(res);

@@ -1,14 +1,13 @@
-import { inspect } from 'node:util';
-
-import Head from 'next/head';
-
+import { inspect } from "node:util";
+import Head from "next/head";
+import { slugify } from "@/lib/utils/formatters";
 import {
   fetchProducts,
   fetchProduct,
-} from '@/lib/api-functions/server/products/queries';
-import Layout from '@/components/Layout';
-import Product from '@/components/Product';
-import { slugify } from '@/lib/utils/formatters';
+} from "@/lib/api-functions/server/products/queries";
+import Layout from "@/components/Layout";
+import Product from "@/components/Product";
+
 
 export default function SingleProduct({ ssd = {} }) {
   return (

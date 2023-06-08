@@ -109,7 +109,6 @@ const handler = async (req, res) => {
   };
 
   try {
-    // console.log('sgsend', sgMail.send)
     sgMail.send(msg);
     console.log("confirmation email sent!");
     return res.status(200).json({

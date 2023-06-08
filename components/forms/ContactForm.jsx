@@ -29,7 +29,7 @@ export default function ContactForm({ submitHandler }) {
     formState,
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: "onChange", 
     defaultValues: defaults,
   });
 
