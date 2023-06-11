@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import ProductForm from '@/components/forms/ProductForm';
@@ -9,6 +10,7 @@ import { useRouter } from 'next/navigation';
 export default function AddProduct() {
   const router = useRouter();
   const addMutation = useAdd();
+  
   const submitHandler = (data) => {
     addMutation.mutate(data);
     router.push('/admin/products/');
@@ -30,7 +32,7 @@ export default function AddProduct() {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   return {
     props: {},
   };

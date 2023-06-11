@@ -33,7 +33,7 @@ export default function UpdateProduct({ ssd }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export const getServerSideProps = async ({ params }, any) => {
   const product = await fetchProduct(params.id).catch((err) =>
     console.log(err)
   );

@@ -5,7 +5,6 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { fetchProducts } from '@/lib/api-functions/server/products/queries';
 import { STORAGE_KEY } from '@/lib/tq/products/settings';
 
-// import { log } from '@/lib/utils/formatters';
 
 import { checkPermissions } from '@/lib/api-functions/server/utils';
 import settings from '@/lib/api-functions/server/permissions';
@@ -14,7 +13,7 @@ import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
-import { Button } from '@/components/mui';
+import { Button, EditIcon } from '@/components/mui';
 import { useDelete } from '@/lib/tq/products/mutations';
 
 
