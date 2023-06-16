@@ -2,11 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Markdown from 'marked-react';
-import {
-  Card,
-  CardMedia,
-  CardContent,
-} from '@/components/mui';
+import { Card, CardMedia, CardContent } from '@/components/mui';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import { AllItems, SinglePost } from '@/lib/hygraph/queries';
@@ -27,13 +23,13 @@ export default function SingleItemQuerie({ ssd = {} }) {
       </Head>
 
       <Layout>
-        <Heading component="h2">Single Item</Heading>
+        <Heading component="h2">Info</Heading>
         <Card component={'article'} sx={{ width: '100%' }}>
           <CardMedia sx={{ display: 'grid', placeContent: 'center' }}>
-            <Image alt={title} src={url} width="200" height="200" />
+            <Image alt={title} src={url} width="650" height="400" />
           </CardMedia>
           <CardContent>
-            <Heading component="h2">{title}</Heading>
+            <Heading component="h4">{title}</Heading>
             <Markdown>{body}</Markdown>
           </CardContent>
         </Card>

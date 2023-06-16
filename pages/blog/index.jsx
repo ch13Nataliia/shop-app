@@ -23,16 +23,16 @@ export default function Item({ ssd = [] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Item list</Heading>
+        <Heading component="h2">Additional info</Heading>
         <List component={'ol'} sx={{ listStyle: 'none' }}>
           {ssd.map(({ id, title, slug, itemImage: {url} }) => (
             <listItem key={id}>
-              <Card component={'article'} sx={{ width: '100%' }}>
+              <Card component={'article'} sx={{ width: 'auto' }}>
               <CardMedia sx={{ display: "grid", placeContent: "center" }}>
-                  <Image alt={title} src={url} width="200" height="200" />
+                  <Image alt={title} src={url} width="650" height="450" />
                 </CardMedia>
                 <CardContent>
-                  <Heading component="h2">{title}</Heading>
+                  <Heading component="h4">{title}</Heading>
                 </CardContent>
               
                 <CardActions>
