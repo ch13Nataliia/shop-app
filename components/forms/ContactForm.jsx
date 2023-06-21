@@ -86,7 +86,7 @@ export default function ContactForm({ submitHandler }) {
       <div style={formRowStyle}>
         <Controller
           control={control}
-          name="text"
+          name="message"
           defaultValue={""}
           render={({ field }) => (
             <TextField
@@ -117,7 +117,7 @@ export default function ContactForm({ submitHandler }) {
           type="submit"
           primary="true"
           variant="contained"
-          disabled={isSubmitting || !isDirty || (isDirty && !isValid)}
+          disabled={isSubmitting || !isDirty}
         >
           Submit
         </Button>
