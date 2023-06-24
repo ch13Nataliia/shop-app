@@ -1,3 +1,7 @@
+This is the final project of my bootcamp with {The Jump} based on Next.js. This app allows users to select products, pay for them using Stripe. Users can contact to the seller and send questions to the seller by using SendGrid. Users can create accounts with 0Auth to make access to their profile. Full CRUD allows you to add, update, remove and query MongoDB about products. For display products were used Material UI and project was deploy on Vercel.
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
