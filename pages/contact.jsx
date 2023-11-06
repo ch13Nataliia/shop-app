@@ -1,9 +1,22 @@
 import Head from 'next/head'
-import Image from "next/image";
+// import Image from "next/image";
 import Layout from '@/components/Layout'
 import Heading from "@/components/Heading";
 import ContactForm from "@/components/forms/ContactForm";
 import { sendEmail } from "@/lib/api-functions/client";
+import {Typography, Box, Grid, Paper, SettingsPhoneIcon, WhatsAppIcon, ChatIcon} from '@/components/mui/index'
+import { experimentalStyled as styled } from '@mui/material/styles';
+
+
+
+
+const SingleItem = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export default function Contact() {
   return (
@@ -15,8 +28,124 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Contact Us</Heading>
-        <ContactForm submitHandler={sendEmail}/>
+      <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
+          Customer Care
+        </Typography>
+        <Typography sx={{ textAlign: 'center' }}>
+          For instant customer service support, including help with your order,
+          product or beauty advice, the below options are available.
+        </Typography>
+
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={4} sm={4} md={4} sx={{ cursor: 'pointer' }}>
+              <SingleItem>
+                <Typography>
+                  <SettingsPhoneIcon />
+                </Typography>
+
+                <Heading component="h2" variant="h4">
+                  Call Us
+                </Heading>
+                <Typography>Talk to us directly on</Typography>
+                <Typography>
+                  <strong>0808 281 0448.</strong>
+                </Typography>
+              </SingleItem>
+            </Grid>
+
+            <Grid item xs={4} sm={4} md={4} sx={{ cursor: 'pointer' }}>
+              <SingleItem>
+                <Typography>
+                  <WhatsAppIcon />
+                </Typography>
+
+                <Heading component="h2" variant="h4">
+                  Whatsapp
+                </Heading>
+                <Typography>add number to your contact list.</Typography>
+                <Typography>
+                  <strong>+4420 35 890 611 </strong>
+                </Typography>
+              </SingleItem>
+            </Grid>
+
+            <Grid item xs={4} sm={8} md={4} sx={{ cursor: 'pointer' }}>
+              <SingleItem>
+                <Typography>
+                  <ChatIcon />
+                </Typography>
+
+                <Heading component="h2" variant="h4">
+                  Chat to Us
+                </Heading>
+                <Typography>Chat now with a beauty advisor.</Typography>
+                <Typography>
+                  <strong>LIVE CHAT</strong>
+                </Typography>
+              </SingleItem>
+            </Grid>
+
+            <Grid item xs={4} sm={8} md={6} sx={{ cursor: 'pointer' }}>
+              <SingleItem>
+                <Typography>
+                  <SettingsPhoneIcon />
+                </Typography>
+
+                <Heading component="h2" variant="h4">
+                  Head Office
+                </Heading>
+                <Typography>
+                  For queries regarding PR, Marketing or any other Head Office
+                  Departments, call
+                </Typography>
+                <Typography>
+                  <strong>0370 034 6810.</strong>
+                </Typography>
+              </SingleItem>
+            </Grid>
+
+            <Grid item xs={4} sm={8} md={6} sx={{ cursor: 'pointer' }}>
+              <SingleItem>
+                <Typography>
+                  <SettingsPhoneIcon />
+                </Typography>
+
+                <Heading component="h2" variant="h4">
+                  eGift Card Enquiries
+                </Heading>
+                <Typography>
+                  For any queries regarding eGift Cards, call Voucher Express on
+                </Typography>
+                <Typography>
+                  <strong> 08081 732066.</strong>
+                </Typography>
+              </SingleItem>
+            </Grid>
+
+
+
+            
+          </Grid>
+        </Box>
+
+        <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
+          Contact Us
+        </Typography>
+        <ContactForm submitHandler={sendEmail} />
+        <Box
+          sx={{ textAlign: 'center', background: '#e3f0d3' }}
+          style={{ marginTop: 20 }}
+        >
+          <Typography variant="h5">Free Delivery and Returns</Typography>
+          <Typography>
+            <strong>RETURN YOUR ORDER WITH 3 SIMPLE STEPS</strong>
+          </Typography>
+        </Box>
       </Layout>
     </>
   );

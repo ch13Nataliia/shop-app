@@ -4,7 +4,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
 import Paper from "@mui/material/Paper";
 import {IconButton} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -33,9 +35,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableFooter from "@mui/material/TableFooter"
-
+import ChatIcon from '@mui/icons-material/Chat';
+import SettingsPhoneIcon from '@mui/icons-material/SettingsPhone';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 export {
   // Icons
+  ChatIcon,
+  Grid,
+  SettingsPhoneIcon,
+  WhatsAppIcon,
   MenuIcon,
   EditIcon,
   DeleteIcon,
