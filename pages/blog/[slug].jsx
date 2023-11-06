@@ -23,14 +23,14 @@ export default function SingleItemQuerie({ ssd = {} }) {
       </Head>
 
       <Layout>
-        <Heading component="h2">Info</Heading>
+        {/* <Heading component="h4" sx={{ textAlign: 'center' }}>OUR CULTURE</Heading> */}
         <Card component={'article'} sx={{ width: '100%' }}>
-          <CardMedia sx={{ display: 'grid', placeContent: 'center' }}>
-            <Image alt={title} src={url} width="650" height="400" />
+          <CardMedia sx={{ display: 'grid', placeContent: 'center', marginTop: 5 }}>
+            <Image alt={title} src={url} width="400" height="500" />
           </CardMedia>
-          <CardContent>
-            <Heading component="h4">{title}</Heading>
-            <Markdown>{body}</Markdown>
+          <CardContent sx={{ textAlign: 'center' }}>
+            <Heading component="h5">{title}</Heading>
+            <Markdown >{body}</Markdown>
           </CardContent>
         </Card>
       </Layout>

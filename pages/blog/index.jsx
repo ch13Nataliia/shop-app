@@ -6,10 +6,13 @@ import Heading from '@/components/Heading';
 import { AllItems } from '@/lib/hygraph/queries';
 import {
   List,
+  Grid,
   Card,
   CardMedia,
   CardContent,
   CardActions,
+  Typography,
+  Box,
 } from '@/components/mui';
 
 export default function Item({ ssd = [] }) {
@@ -23,25 +26,75 @@ export default function Item({ ssd = [] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Additional info</Heading>
-        <List component={'ol'} sx={{ listStyle: 'none' }}>
-          {ssd.map(({ id, title, slug, itemImage: {url} }) => (
-            <listItem key={id}>
-              <Card component={'article'} sx={{ width: 'auto' }}>
-              <CardMedia sx={{ display: "grid", placeContent: "center" }}>
-                  <Image alt={title} src={url} width="650" height="450" />
+        <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
+          ABOUT US
+        </Typography>
+        <Typography
+          Typography
+          component="h2"
+          variant="h6"
+          sx={{ textAlign: 'center', marginTop: 5 }}
+        >
+          Michael Kors is a world-renowned, award-winning designer of luxury
+          accessories and ready-to-wear. His namesake company, established in
+          1981, currently produces a range of products under his signature
+          Michael Kors Collection, MICHAEL Michael Kors and Michael Kors Mens
+          labels. These products include accessories, footwear, watches,
+          jewelry, women’s and men’s ready-to-wear, wearable technology, eyewear
+          and a full line of fragrance products.
+        </Typography>
+        <Typography
+          Typography
+          component="h2"
+          variant="h6"
+          sx={{ textAlign: 'center', marginTop: 5 }}
+        >
+          Michael Kors stores are operated, either directly or through licensing
+          partners, in some of the most prestigious cities in the world,
+          including New York, Beverly Hills, Chicago, London, Milan, Paris,
+          Munich, Istanbul, Dubai, Seoul, Tokyo, Hong Kong, Shanghai and Rio de
+          Janeiro. The company prides itself on hiring and retaining diverse
+          talent and providing an inclusive work environment for all, while
+          celebrating global events and cultures that reflect the diversity,
+          experiences and perspectives of people around the world.{' '}
+        </Typography>
+        <Typography
+          Typography
+          component="h2"
+          variant="h6"
+          sx={{ textAlign: 'center', marginTop: 5 }}
+        >
+          Behind this burgeoning empire stands a singular designer with an
+          innate sense of glamour and an unfailing eye for timeless chic.
+          Michael Kors has won numerous accolades within the fashion industry,
+          been honored for his philanthropy, and earned the respect and
+          affection of millions. Wholly dedicated to a vision of style that is
+          as sophisticated as it is indulgent, as iconic as it is modern, he has
+          created an enduring luxury lifestyle empire with a global reach.
+        </Typography>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 4 }}
+          columns={{ xs: 4, sm: 6, md: 12, lg: 12 }}
+        >
+          {ssd.map(({ id, title, slug, subTitle, itemImage: { url } }) => (
+            <Grid item xs={4} sm={8} md={6} key={id}>
+              <Card component={'article'} sx={{ width: 'auto', marginTop: 5 }}>
+                <CardMedia sx={{ display: 'grid', placeContent: 'center', }}>
+                  <Image alt={title} src={url} width="400" height="500" />
                 </CardMedia>
-                <CardContent>
+                <CardContent sx={{ textAlign: 'center' }}>
                   <Heading component="h4">{title}</Heading>
+                  <Heading component="h6">{subTitle}</Heading>
                 </CardContent>
-              
+
                 <CardActions>
-                <Link href={`/blog/${slug}`}>Read more...</Link>
+                  <Link href={`/blog/${slug}`}>Read more...</Link>
                 </CardActions>
               </Card>
-            </listItem>
+            </Grid>
           ))}
-        </List>
+        </Grid>
       </Layout>
     </>
   );
@@ -69,4 +122,3 @@ export const getStaticProps = async () => {
     },
   };
 };
-

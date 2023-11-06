@@ -23,6 +23,7 @@ const Productlist = ({
       components="ol"
       sx={{
         display: 'grid',
+        bgcolor: 'lightgray',
         gridTemplateColumns: 'repeat(auto-fill, minmax(400px,1fr))',
       }}
     >
