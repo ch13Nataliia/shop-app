@@ -38,9 +38,35 @@ import TableFooter from "@mui/material/TableFooter"
 import ChatIcon from '@mui/icons-material/Chat';
 import SettingsPhoneIcon from '@mui/icons-material/SettingsPhone';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
 export {
   // Icons
+  BottomNavigation,
+  InstagramIcon,
+  YouTubeIcon,
+  PinterestIcon,
+  TwitterIcon,
+  FacebookIcon ,
+  FavoriteIcon,
+  LocationOnIcon,
+  BottomNavigationAction,
   ChatIcon,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  ExpandMoreIcon,
   Grid,
   SettingsPhoneIcon,
   WhatsAppIcon,

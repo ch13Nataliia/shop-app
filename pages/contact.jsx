@@ -1,14 +1,19 @@
-import Head from 'next/head'
+import Head from 'next/head';
 // import Image from "next/image";
-import Layout from '@/components/Layout'
-import Heading from "@/components/Heading";
-import ContactForm from "@/components/forms/ContactForm";
-import { sendEmail } from "@/lib/api-functions/client";
-import {Typography, Box, Grid, Paper, SettingsPhoneIcon, WhatsAppIcon, ChatIcon} from '@/components/mui/index'
+import Layout from '@/components/Layout';
+import Heading from '@/components/Heading';
+import ContactForm from '@/components/forms/ContactForm';
+import { sendEmail } from '@/lib/api-functions/client';
+import {
+  Typography,
+  Box,
+  Grid,
+  Paper,
+  SettingsPhoneIcon,
+  WhatsAppIcon,
+  ChatIcon,
+} from '@/components/mui/index';
 import { experimentalStyled as styled } from '@mui/material/styles';
-
-
-
 
 const SingleItem = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,7 +33,7 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-      <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
+        <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
           Customer Care
         </Typography>
         <Typography sx={{ textAlign: 'center' }}>
@@ -39,7 +44,7 @@ export default function Contact() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 3, md: 6 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={4} md={4} sx={{ cursor: 'pointer' }}>
@@ -126,20 +131,20 @@ export default function Contact() {
                 </Typography>
               </SingleItem>
             </Grid>
-
-
-
-            
           </Grid>
         </Box>
 
-        <Typography component="h2" variant="h3" sx={{ textAlign: 'center' }}>
+        <Typography
+          component="h2"
+          variant="h3"
+          sx={{ textAlign: 'center', marginTop: 5 }}
+        >
           Contact Us
         </Typography>
         <ContactForm submitHandler={sendEmail} />
         <Box
           sx={{ textAlign: 'center', background: '#e3f0d3' }}
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 30, padding: 20 }}
         >
           <Typography variant="h5">Free Delivery and Returns</Typography>
           <Typography>

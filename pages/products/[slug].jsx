@@ -19,7 +19,7 @@ export default function SingleProduct({ ssd = {} }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Product product={ssd} headingLevel={1} />
+        <Product product={ssd} headingLevel={3} />
       </Layout>
     </>
   );

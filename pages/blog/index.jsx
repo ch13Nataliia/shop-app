@@ -80,7 +80,7 @@ export default function Item({ ssd = [] }) {
           {ssd.map(({ id, title, slug, subTitle, itemImage: { url } }) => (
             <Grid item xs={4} sm={8} md={6} key={id}>
               <Card component={'article'} sx={{ width: 'auto', marginTop: 5 }}>
-                <CardMedia sx={{ display: 'grid', placeContent: 'center', }}>
+                <CardMedia sx={{ display: 'grid', placeContent: 'center' }}>
                   <Image alt={title} src={url} width="400" height="500" />
                 </CardMedia>
                 <CardContent sx={{ textAlign: 'center' }}>

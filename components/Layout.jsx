@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 
 import Header from '@/components/Header';
-
+import FooterNavigation from './navigation/FooterNavigation';
 import {
   Container,
   Alert,
   Snackbar,
   IconButton,
   CloseIcon,
+  Typography,
 } from '@/components/mui';
 
 import { UIContext } from '@/components/contexts/UI.context';
 import Paragraph from '@/components/Paragraph';
+
 
 function Layout({ children }) {
   const {
@@ -28,9 +30,12 @@ function Layout({ children }) {
         <Header />
       </header>
       <main>
+
         <Container maxWidth="xl">{children}</Container>
       </main>
-
+      <footer>
+        <FooterNavigation />
+      </footer>
       <Snackbar
         open={open}
         autoHideDuration={hideDuration}

@@ -14,28 +14,31 @@ import {
   DeleteIcon,
   Button,
   Box,
+  Paper,
+  Grid
 } from "@/components/mui";
 import Heading from "@/components/Heading";
 
 import { slugify, formatPrice } from "@/lib/utils/formatters";
 
+
 const ProductDisplay = ({
-  product: { _id, title, image, price, quantity } = {},
+  product: { _id, title, image, description, price, quantity } = {},
   deleteHandler = () => {
     console.log("no delete handler supplied");
   },
   addToBasket = (id) => {
     console.log("no addToBasket handler supplied", id);
   },
-  headingLevel = 2,
+  headingLevel = 5,
   canUpdate = false,
   canRemove = false,
   canBuy=false
 }) => {
   return (
-    <Card sx={{ width: "100%" }}>
+    <Grid sx={{ width: "500" }}>
       <CardMedia sx={{ display: "grid", placeItems: "center" }}>
-        <Image alt={title} src={image} width="500" height="500" />
+        <Image alt={title} src={image} width="300" height="300" />
       </CardMedia>
       <CardContent>
         <Heading component={`h${headingLevel}`} sx={{ textAlign: "center" }}>
@@ -89,7 +92,7 @@ const ProductDisplay = ({
           )}
         </Box>
       </CardActions>
-    </Card>
+    </Grid>
   );
 };
 

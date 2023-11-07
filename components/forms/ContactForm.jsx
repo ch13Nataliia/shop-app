@@ -94,7 +94,7 @@ export default function ContactForm({ submitHandler }) {
               {...field}
               label="message"
               multiline
-              rows={4}
+              rows={10}
               fullWidth
               error={!!errors.message}
               helperText={errors.message?.message}

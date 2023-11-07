@@ -6,6 +6,7 @@ import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from '@/components/QueryBoundaries';
 import ProductList from '@/components/ProductList';
+import { Typography } from '@mui/material';
 
 
   export default function Home() {
@@ -18,10 +19,11 @@ import ProductList from '@/components/ProductList';
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Layout>
-          <Heading component="h2">Products</Heading>
+          <Typography component="h2" variant="h3" sx={{textAlign: 'center', p: 5}}>Our new collection</Typography>
           <QueryBoundaries>
             <ProductList />
           </QueryBoundaries>
+
         </Layout>
       </>
     );
